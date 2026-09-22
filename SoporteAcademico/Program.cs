@@ -38,7 +38,12 @@ static string AsignarPrioridadConsulta(string tipoconsulta)
     {
         return false;
     }
-
+    
+    static bool ValidarTextoObligatorio(string texto)
+    {
+        bool esValido2 = (texto != "");
+        return esValido2;
+    }
 
     bool restoSonDigitos = true;
     for (int i = 1; i < codigo.Length; i++)
