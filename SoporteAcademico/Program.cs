@@ -1,4 +1,6 @@
-﻿ // Se usan parámetros para enviar datos a las funciones sin depender de variables globales innecesarias. 
+﻿ // Se usan parámetros para enviar datos a las funciones sin depender de variables globales innecesarias.
+
+// Se controla el alcance de variables diferenciando en datos del programa principal y datos internos de cada función.
 
     static void MostrarMenuPrincipal()
     {
