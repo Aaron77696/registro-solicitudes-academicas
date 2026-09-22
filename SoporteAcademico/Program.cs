@@ -6,19 +6,29 @@
         Console.WriteLine("2. Ver resumen");
         Console.WriteLine("3. Salir");
     }
+    static void MostrarResumen(string codigo, string nombre, string tipoconsulta,
+                            string descripcionbreve, string prioridad)
+    {
+        Console.WriteLine("----- RESUMEN DE SOLICITUD -----");
+        Console.WriteLine("Código: " + codigo);
+        Console.WriteLine("Nombre: " + nombre);
+        Console.WriteLine("Tipo de consulta: " + tipoconsulta);
+        Console.WriteLine("Descripción: " + descripcionbreve);
+        Console.WriteLine("Prioridad: " + prioridad);
+    }
+    
+    static string AsignarPrioridadConsulta(string tipoconsulta)
+    {
+        string prioridad = "Baja";
 
-static string AsignarPrioridadConsulta(string tipoconsulta)
-{
-    string prioridad = "Baja";
+        if (tipoconsulta == "pagos") { prioridad = "Alta"; }
+        if (tipoconsulta == "matricula") { prioridad = "Alta"; }
+        if (tipoconsulta == "constancia") { prioridad = "Media"; }
+        if (tipoconsulta == "plataforma") { prioridad = "Media"; }
+        if (tipoconsulta == "otro") { prioridad = "Baja"; }
 
-    if (tipoconsulta == "pagos") { prioridad = "Alta"; }
-    if (tipoconsulta == "matricula") { prioridad = "Alta"; }
-    if (tipoconsulta == "constancia") { prioridad = "Media"; }
-    if (tipoconsulta == "plataforma") { prioridad = "Media"; }
-    if (tipoconsulta == "otro") { prioridad = "Baja"; }
-
-    return prioridad;
-}
+        return prioridad;
+    }
 
     bool ValidarCodigo(string codigo, int longitudMin)
     {
