@@ -7,6 +7,18 @@
         Console.WriteLine("3. Salir");
     }
 
+static string AsignarPrioridadConsulta(string tipoconsulta)
+{
+    string prioridad = "Baja";
+
+    if (tipoconsulta == "pagos") { prioridad = "Alta"; }
+    if (tipoconsulta == "matricula") { prioridad = "Alta"; }
+    if (tipoconsulta == "constancia") { prioridad = "Media"; }
+    if (tipoconsulta == "plataforma") { prioridad = "Media"; }
+    if (tipoconsulta == "otro") { prioridad = "Baja"; }
+
+    return prioridad;
+}
 
     bool ValidarCodigo(string codigo, int longitudMin)
     {
