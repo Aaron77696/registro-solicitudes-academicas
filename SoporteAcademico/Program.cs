@@ -1,4 +1,13 @@
-﻿
+﻿    
+    static void MostrarMenuPrincipal()
+    {
+        Console.WriteLine("===== MENÚ PRINCIPAL =====");
+        Console.WriteLine("1. Registrar solicitud");
+        Console.WriteLine("2. Ver resumen");
+        Console.WriteLine("3. Salir");
+    }
+
+
     bool ValidarCodigo(string codigo, int longitudMin)
     {
     if (codigo == "")
