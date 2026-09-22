@@ -33,7 +33,28 @@
 
     bool ValidarTipoConsulta(string tipoconsulta)
     {
-        return true;
+  	bool esValido1 = false;	
+	if (tipoconsulta == "matricula") 
+    {
+	esValido1 = true;
+    }
+	if (tipoconsulta == "pagos") 
+    {
+	esValido1 = true;       
+    }
+    if (tipoconsulta == "constancia") 
+	{
+    	esValido1 = true;
+    }
+	if (tipoconsulta == "plataforma") 
+	{
+    	esValido1 = true;
+    }
+	if (tipoconsulta == "otro")
+    {
+		esValido1 = true;
+    }
+    return esValido1;
     }
     
     bool RegistrarDatos(string codigo, string nombre, string tipoconsulta, string descripcionbreve)
