@@ -1,4 +1,5 @@
-﻿    
+﻿ // Se usan parámetros para enviar datos a las funciones sin depender de variables globales innecesarias. 
+
     static void MostrarMenuPrincipal()
     {
         Console.WriteLine("===== MENÚ PRINCIPAL =====");
@@ -16,7 +17,7 @@
         Console.WriteLine("Descripción: " + descripcionbreve);
         Console.WriteLine("Prioridad: " + prioridad);
     }
-    
+
     static string AsignarPrioridadConsulta(string tipoconsulta)
     {
         string prioridad = "Baja";
