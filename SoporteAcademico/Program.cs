@@ -1,6 +1,42 @@
-﻿ // Se usan parámetros para enviar datos a las funciones sin depender de variables globales innecesarias.
+﻿ using System;
+ // Se usan parámetros para enviar datos a las funciones sin depender de variables globales innecesarias.
 
 // Se controla el alcance de variables diferenciando en datos del programa principal y datos internos de cada función.
+
+int contador = 0;
+
+        MostrarMenuPrincipal();
+
+        while (contador < 3)
+        {
+            Console.Write("Código: ");
+            string codigo = Console.ReadLine()!;
+
+            Console.Write("Nombre: ");
+            string nombre = Console.ReadLine()!;
+
+            Console.Write("Tipo de consulta: ");
+            string tipoconsulta = Console.ReadLine()!;
+
+            Console.Write("Descripción: ");
+            string descripcionbreve = Console.ReadLine()!;
+
+            bool esCorrecto = RegistrarDatos(codigo, nombre, tipoconsulta, descripcionbreve);
+
+            if (esCorrecto)
+            {
+                string prioridad = AsignarPrioridadConsulta(tipoconsulta);
+                MostrarResumen(codigo, nombre, tipoconsulta, descripcionbreve, prioridad);
+                contador = contador + 1;
+            }
+            else
+            {
+                Console.WriteLine("Datos inválidos, intente nuevamente.");
+            }
+        }
+
+
+
 
     static void MostrarMenuPrincipal()
     {
@@ -9,6 +45,7 @@
         Console.WriteLine("2. Ver resumen");
         Console.WriteLine("3. Salir");
     }
+    
     static void MostrarResumen(string codigo, string nombre, string tipoconsulta,
                             string descripcionbreve, string prioridad)
     {
@@ -33,7 +70,7 @@
         return prioridad;
     }
 
-    bool ValidarCodigo(string codigo, int longitudMin)
+    static bool ValidarCodigo(string codigo, int longitudMin)
     {
     if (codigo == "")
     {
@@ -51,12 +88,6 @@
     {
         return false;
     }
-    
-    static bool ValidarTextoObligatorio(string texto)
-    {
-        bool esValido2 = (texto != "");
-        return esValido2;
-    }
 
     bool restoSonDigitos = true;
     for (int i = 1; i < codigo.Length; i++)
@@ -70,7 +101,15 @@
     return restoSonDigitos;
     }
 
-    bool ValidarTipoConsulta(string tipoconsulta)
+    static bool ValidarTextoObligatorio(string texto)
+    {
+        bool esValido2 = (texto != "");
+        return esValido2;
+    }
+
+
+
+    static bool ValidarTipoConsulta(string tipoconsulta)
     {
   	bool esValido1 = false;	
 	if (tipoconsulta == "matricula") 
@@ -96,18 +135,15 @@
     return esValido1;
     }
     
-    bool RegistrarDatos(string codigo, string nombre, string tipoconsulta, string descripcionbreve)
+    static bool RegistrarDatos(string codigo, string nombre, string tipoconsulta, string descripcionbreve)
     {
         int longitudMin = 8;
-        bool esBoleano1 = (ValidarCodigo(codigo, longitudMin)==true) && (ValidarTipoConsulta(tipoconsulta)==true);
-        return esBoleano1;
+        
+    bool codValido = ValidarCodigo(codigo, longitudMin);
+    bool tipoValido = ValidarTipoConsulta(tipoconsulta);
+    bool nombreValido = ValidarTextoObligatorio(nombre);
+    bool descripcionValida = ValidarTextoObligatorio(descripcionbreve);
+
+    bool esBoleano1 = codValido && tipoValido && nombreValido && descripcionValida;
+    return esBoleano1;
     }
-
-
-    bool esCorrecto = RegistrarDatos("N00101920", "Marta", "constancia", "Descargar constancia de asistencia");
-
-	if (esCorrecto)
-    {
-		Console.WriteLine("Datos ingresados exitosamente.");
-    }
-
