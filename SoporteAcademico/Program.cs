@@ -3,6 +3,40 @@
 
 // Se controla el alcance de variables diferenciando en datos del programa principal y datos internos de cada función.
 
+static void EjecutarPruebas()
+{
+    List<string> resultados = new List<string>();
+
+    // PRUEBA 1 - Datos válidos
+    bool prueba1 = RegistrarDatos("N00101920", "Marta", "constancia", "Descargar constancia");
+    resultados.Add("Prueba 1 (datos válidos): " + prueba1);
+
+    // PRUEBA 2 - Datos vacíos
+    bool prueba2 = RegistrarDatos("", "Marta", "constancia", "Descargar constancia");
+    resultados.Add("Prueba 2 (código vacío): " + prueba2);
+
+    // PRUEBA 3 - Tipo de consulta incorrecto
+    bool prueba3 = RegistrarDatos("N00101920", "Marta", "reclamo", "Descargar constancia");
+    resultados.Add("Prueba 3 (tipo incorrecto): " + prueba3);
+
+    // PRUEBA 4 - Prioridad alta
+    string prueba4 = AsignarPrioridadConsulta("pagos");
+    resultados.Add("Prueba 4 (prioridad alta): " + prueba4);
+
+    // PRUEBA 5 - Prioridad baja
+    string prueba5 = AsignarPrioridadConsulta("deportes");
+    resultados.Add("Prueba 5 (prioridad baja): " + prueba5);
+
+    Console.WriteLine("----- RESULTADOS DE PRUEBAS -----");
+    foreach (string resultado in resultados)
+    {
+        Console.WriteLine(resultado);
+    }
+}
+
+EjecutarPruebas();
+
+
 int contador = 0;
 
         MostrarMenuPrincipal();
